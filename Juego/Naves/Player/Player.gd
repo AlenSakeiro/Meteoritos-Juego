@@ -11,6 +11,10 @@ var empuje:Vector2 = Vector2.ZERO
 var dir_rotacion:int = 0
 
 
+## Atributos Onready
+onready var canion:Canion = $Canion
+
+
 ## Metodos
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	apply_central_impulse(empuje.rotated(rotation))
