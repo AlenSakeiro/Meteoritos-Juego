@@ -3,6 +3,7 @@ extends RigidBody2D
 
 ## Atributos Onready
 onready var canion:Canion = $Canion
+onready var laser:RayoLaser = $LaserBeam2D
 
 ## Atributos export
 export var potencia_motor:int = 20
