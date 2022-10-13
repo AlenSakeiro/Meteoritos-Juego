@@ -5,12 +5,13 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
-height = 32.0
+height = 28.0
 
 [node name="Proyectil" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 2, 2.65, 2.67, 0.44 )
 rotation = 1.5708
 scale = Vector2( 1.5, 1.2 )
 texture = ExtResource( 1 )
@@ -20,6 +21,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-scale = Vector2( 2.1, 0.5 )
+modulate = Color( 1, 0.0352941, 0.0352941, 1 )
+scale = Vector2( 1.9, 0.4 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
