@@ -55,10 +55,3 @@ func disparar() -> void:
 
 func _on_TimerEnfriamiento_timeout() -> void:
 	esta_enfriado = true
-
-## Construir
-func crear(pos: Vector2, dir: float, vel: float, danio_p: int) -> void:
-	position = pos
-	rotation = dir
-	velocidad = Vector2(vel, 0).rotated(dir)
-	danio = danio_p
