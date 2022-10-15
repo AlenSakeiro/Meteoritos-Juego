@@ -1,7 +1,7 @@
 class_name Player
 extends RigidBody2D
 
-## Atributos export
+## Atributos Export
 export var potencia_motor:int = 20
 export var potencia_rotacion:int = 280
 export var estela_maxima:int = 150
@@ -34,7 +34,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not esta_input_activo():
 		return
 	
-	# DisparoRayo
+	# Disparo Rayo
 	if event.is_action_pressed("disparo_secundario"):
 		laser.set_is_casting(true)
 	
@@ -73,6 +73,7 @@ func controlador_estados(nuevo_estado: int) -> void:
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled", true)
 			canion.set_puede_disparar(true)
+			Eventos.emit_signal("nave_destruida", global_position)
 			queue_free()
 	estado_actual = nuevo_estado
 
@@ -100,12 +101,19 @@ func player_input() -> void:
 	if Input.is_action_just_released("disparo_principal"):
 		canion.set_esta_disparando(false)
 
-## Señales internas
+## Señales Internas
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "spawn":
 		controlador_estados(ESTADO.VIVO)
 
+func destruir() -> void:
+	controlador_estados(ESTADO.MUERTO)
+	Eventos.emit_signal("nave_destruida", global_position, 3)
+
 ## Enums
-enum ESTADO {SPAWN, VIVO, INVENCIBLE, MUERTO}
+enum ESTADO {SPAWN, VIVO, INVENSIBLE, MUERTO}
+
+
+
 
 

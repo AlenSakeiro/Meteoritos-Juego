@@ -2,14 +2,14 @@ class_name Canion
 extends Node2D
 
 
-## Atributos export
+## Atributos Export
 export var proyectil:PackedScene = null
 export var cadencia_disparo:float = 0.8
 export var velocidad_proyectil:int = 100
 export var danio_proyectil:int = 1
 
 
-## Atributos onready
+## Atributos Onready
 onready var timer_enfriamiento:Timer = $TimerEnfriamiento
 onready var disparo_sfx:AudioStreamPlayer2D = $DisparosSFX
 onready var esta_enfriado:bool = true
@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 	if esta_disparando and esta_enfriado:
 		disparar()
 
-## Metodos custom
+## Metodos Custom
 func almacenar_puntos_disparo() -> void:
 	for nodo in get_children():
 		if nodo is Position2D:

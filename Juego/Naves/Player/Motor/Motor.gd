@@ -1,11 +1,11 @@
 class_name Motor
 extends AudioStreamPlayer2D
 
-## Atributos export
+## Atributos Export
 export var tiempo_transicion:float = 0.6
 export var volumen_apagado:float = -30.0
 
-## Atributos onready
+## Atributos Onready
 onready var tween_sonido:Tween = $Tween
 
 ## Atributos
