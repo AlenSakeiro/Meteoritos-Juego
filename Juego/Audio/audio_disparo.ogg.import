@@ -11,5 +11,5 @@ dest_files=[ "res://.import/audio_disparo.ogg-4aef4b2de70de5a1b00e1649fde05043.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
