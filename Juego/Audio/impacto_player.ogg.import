@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impacto_player.ogg-6f68c0df6c2ed990ef6d72196fc1d128.oggstr"
+
+[deps]
+
+source_file="res://Juego/Audio/impacto_player.ogg"
+dest_files=[ "res://.import/impacto_player.ogg-6f68c0df6c2ed990ef6d72196fc1d128.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
