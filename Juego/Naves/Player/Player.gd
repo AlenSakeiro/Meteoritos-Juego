@@ -5,6 +5,7 @@ extends RigidBody2D
 export var potencia_motor:int = 20
 export var potencia_rotacion:int = 280
 export var estela_maxima:int = 150
+export var hitpoints:float = 15.0
 
 
 ## Atributos Onready
@@ -13,6 +14,8 @@ onready var laser:RayoLaser = $LaserBeam2D
 onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motor_sfx:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
+onready var impacto_sfx:AudioStreamPlayer = $ImpactosSFX
+onready var escudo:Escudo = $Escudo
 
 
 ## Atributos
@@ -51,6 +54,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_released("mover_adelante")
 		or event.is_action_released("mover_atras")):
 			motor_sfx.sonido_off()
+	# Control Escudo
+	if event.is_action_pressed("escudo") and not escudo.get_esta_activado():
+		escudo.activar()
 
 func _integrate_forces(_state: Physics2DDirectBodyState) -> void:
 	apply_central_impulse(empuje.rotated(rotation))
@@ -100,6 +106,13 @@ func player_input() -> void:
 	
 	if Input.is_action_just_released("disparo_principal"):
 		canion.set_esta_disparando(false)
+
+func recibir_danio(danio: float) -> void:
+	hitpoints -= danio
+	if hitpoints <= 0.0:
+		destruir()
+		
+	impacto_sfx.play()
 
 ## Señales Internas
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
